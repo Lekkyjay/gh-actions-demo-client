@@ -8,7 +8,7 @@ interface IUser {
 export default function UserProfile({ userId }: { userId: number }) {
   const [user, setUser] = useState<IUser | null>(null)
 
-  const API_URL = import.meta.env.VITE_API_URL
+  // const API_URL = import.meta.env.VITE_API_URL
 
   // useEffect(() => {
   //   fetch(`${API_URL}/users`)
@@ -16,13 +16,18 @@ export default function UserProfile({ userId }: { userId: number }) {
   //   .then((data) => setUsers(data))
   // }, [])
 
+  // useEffect(() => {
+  //   fetch(`${API_URL}/users/${userId}`)    
+  //     .then((res) => res.json())
+  //     .then((data) => setUser(data))
+  // }, [userId])
+
   useEffect(() => {
-    fetch(`${API_URL}/users/${userId}`)    
+    fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
       .then((res) => res.json())
       .then((data) => setUser(data))
   }, [userId])
-
-  console.log('user', user)
+  
 
   if (!user) return <p>Loading...</p>
 
