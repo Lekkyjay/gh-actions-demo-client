@@ -22,6 +22,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
+    - name: "Installing pnpm"
+      run: npm install -g pnpm
     - name: "Installing Dependencies"
       run: pnpm i
 
@@ -43,6 +45,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
+    - name: "Installing pnpm"
+      run: npm install -g pnpm
     - name: "Installing Dependencies"
       run: pnpm i
 
