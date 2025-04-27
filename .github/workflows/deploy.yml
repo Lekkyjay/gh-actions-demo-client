@@ -1,0 +1,16 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - run: docker build . -t lekky/react-gh-actions
+    - run: echo "${{secrets.DOCKERHUB_PW}}" | docker login -u ${{secrets.DOCKERHUB_USER}} --password-stdin 
+    - run: docker push lekky/react-gh-actions:latest
