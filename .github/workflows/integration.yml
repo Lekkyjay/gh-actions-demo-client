@@ -17,14 +17,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
-    - name: "Installing pnpm"
-      run: npm install -g pnpm
-    - name: "Installing Dependencies"
+    - name: "Install Dependencies"
       run: pnpm i
 
     - name: "Build command"
@@ -40,14 +42,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
-    - name: "Installing pnpm"
-      run: npm install -g pnpm
-    - name: "Installing Dependencies"
+    - name: "Install Dependencies"
       run: pnpm i
 
     - name: "Running test cases"
